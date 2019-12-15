@@ -1,0 +1,49 @@
+Data Products Week 3: Ploty Presentation
+========================================================
+author: David Nidorf
+date: 12/14/2019
+autosize: true
+
+Weight Lifting Exercise Data
+========================================================
+
+```{r, echo=FALSE}
+# Load libraries
+library(plotly)
+library(dplyr)
+```
+
+
+This presentation uses data sourced from [Groupware](http://web.archive.org/web/20161224072740/http:/groupware.les.inf.puc-rio.br/har):
+
+*Velloso, E.; Bulling, A.; Gellersen, H.; Ugulino, W.; Fuks, H. Qualitative Activity Recognition of Weight Lifting Exercises. Proceedings of 4th International Conference in Cooperation with SIGCHI (Augmented Human '13) . Stuttgart, Germany: ACM SIGCHI, 2013.*
+
+*"This human activity recognition research has traditionally focused on discriminating between different activities, i.e. to predict "which" activity was performed at a specific point in time (like with the Daily Living Activities dataset above). The approach we propose for the Weight Lifting Exercises dataset is to investigate "how (well)" an activity was performed by the wearer. The "how (well)" investigation has only received little attention so far, even though it potentially provides useful information for a large variety of applications,such as sports training."*
+
+```{r}
+# Read the training set
+training = read.csv("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv")
+```
+
+
+Slide With Plot
+========================================================
+
+Below, we have charted a box plot showing the total acceleration of the dumbbell during each of the fix exercise styles for the 6 participants in the study.  You can mouse over the chart to see how the different styles involved different levels of acceleration.
+
+```{r, echo=FALSE}
+# Create the plot
+oldw <- getOption("warn")
+options(warn=-1)
+plot_ly(data = training, x = training$user_name, y = training$total_accel_dumbbell, color = training$classe, type="box") %>% layout(boxmode="group")
+options(warn=oldw)
+```
+
+```{r, eval=FALSE}
+# Create the plot
+plot_ly(data = training, x = training$user_name, y = training$total_accel_dumbbell, color = training$classe, type="box") %>% layout(boxmode="group")
+```
+
+Thanks!
+========================================================
+
