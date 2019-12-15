@@ -1,18 +1,18 @@
-Data Products Week 3: Ploty Presentation
-========================================================
-author: David Nidorf
-date: 12/14/2019
-autosize: true
+---
+title: 'Data Products Week 3: Ploty Presentation'
+author: "David Nidorf"
+date: "12/15/2019"
+output: slidy_presentation
+---
 
-Weight Lifting Exercise Data
-========================================================
-
-```{r, echo=FALSE}
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
 # Load libraries
 library(plotly)
 library(dplyr)
 ```
 
+## Weight Lifting Exercise Data
 
 This presentation uses data sourced from [Groupware](http://web.archive.org/web/20161224072740/http:/groupware.les.inf.puc-rio.br/har):
 
@@ -25,11 +25,9 @@ This presentation uses data sourced from [Groupware](http://web.archive.org/web/
 training = read.csv("https://d396qusza40orc.cloudfront.net/predmachlearn/pml-training.csv")
 ```
 
+## Plotted Data
 
-Slide With Plot
-========================================================
-
-Below, we have charted a box plot showing the total acceleration of the dumbbell during each of the fix exercise styles for the 6 participants in the study.  You can mouse over the chart to see how the different styles involved different levels of acceleration.
+Below, we have charted a box plot showing the total acceleration of the dumbbell during each of the fix exercise styles for the 6 participants in the study.  You can mouse over the chart to see how the different styles involved different levels of acceleration for each participant.
 
 ```{r, echo=FALSE}
 # Create the plot
@@ -39,11 +37,9 @@ plot_ly(data = training, x = training$user_name, y = training$total_accel_dumbbe
 options(warn=oldw)
 ```
 
-```{r, eval=FALSE}
+```{r, eval=FALSE, echo=TRUE}
 # Create the plot
 plot_ly(data = training, x = training$user_name, y = training$total_accel_dumbbell, color = training$classe, type="box") %>% layout(boxmode="group")
 ```
 
-Thanks!
-========================================================
-
+## Thanks!
